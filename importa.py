@@ -7,11 +7,7 @@ import seaborn as sns
 import locale
 
 
-# Tente configurar 'C.UTF-8' como fallback, caso 'pt_BR.UTF-8' não funcione
-try:
-    locale.setlocale(locale.LC_TIME, 'pt_BR.UTF-8')
-except locale.Error:
-    locale.setlocale(locale.LC_TIME, 'C.UTF-8')
+
 
 def connect_to_mariadb():
 
@@ -588,7 +584,7 @@ def connect_to_mariadb():
                         # Linha de separação as equipes
                         st.markdown("<hr>", unsafe_allow_html=True)
 
-                        # Tente configurar 'C.UTF-8' como fallback, caso 'pt_BR.UTF-8' não funcione
+                    # Tente configurar 'C.UTF-8' como fallback, caso 'pt_BR.UTF-8' não funcione
                         try:
                             locale.setlocale(locale.LC_TIME, 'pt_BR.UTF-8')
                         except locale.Error:
