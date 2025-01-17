@@ -4,7 +4,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import locale
+
 
 def connect_to_mariadb():
         st.set_page_config(page_title="Inspeções Dinâmicas Dolp", page_icon="🦺", initial_sidebar_state="expanded")
@@ -583,8 +583,6 @@ def connect_to_mariadb():
 
 
 
-                        # Configurar a localização para português do Brasil
-                        locale.setlocale(locale.LC_TIME, 'pt_BR.UTF-8')
 
                         # Agrupar por mês para calcular as porcentagens para cada mês
                         inspecionadas_por_mes = df_filtrado.groupby(df_filtrado['data_blitz'].dt.month)[
@@ -622,7 +620,7 @@ def connect_to_mariadb():
                             'Porcentagem Não Inspecionada': porcentagens_nao_inspecionadas_por_mes,
                         })
 
-                      
+
 
                         # Ordenar o DataFrame pela coluna "Mês"
                         inspecionadas_nao_inspecionadas = inspecionadas_nao_inspecionadas.sort_values('Mês')
