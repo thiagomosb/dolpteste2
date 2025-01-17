@@ -6,12 +6,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import locale
 
-
-
-
 def connect_to_mariadb():
-
-        global mostrar_grafico
         st.set_page_config(page_title="Inspeções Dinâmicas Dolp", page_icon="🦺", initial_sidebar_state="expanded")
 
         try:
@@ -584,11 +579,10 @@ def connect_to_mariadb():
                         # Linha de separação as equipes
                         st.markdown("<hr>", unsafe_allow_html=True)
 
-                    # Tente configurar 'C.UTF-8' como fallback, caso 'pt_BR.UTF-8' não funcione
-                        try:
-                            locale.setlocale(locale.LC_TIME, 'pt_BR.UTF-8')
-                        except locale.Error:
-                            locale.setlocale(locale.LC_TIME, 'C.UTF-8')
+
+
+                        # Configurar a localização para português do Brasil
+                        locale.setlocale(locale.LC_TIME, 'pt_BR.UTF-8')
 
                         # Agrupar por mês para calcular as porcentagens para cada mês
                         inspecionadas_por_mes = df_filtrado.groupby(df_filtrado['data_blitz'].dt.month)[
@@ -991,7 +985,7 @@ def connect_to_mariadb():
 
         except Error as e:
             print(f"Erro ao conectar ao MariaDB: {e}")
-
+        
 
     # Chame a função de conexão para executar o script
 connect_to_mariadb()
